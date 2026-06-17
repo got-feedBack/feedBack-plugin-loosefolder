@@ -1,6 +1,6 @@
 # Slopsmith Plugin: Loose Folder Support
 
-A plugin for [Slopsmith](https://github.com/byrongamatos/slopsmith) that adds a **Fix Sync** UI for loose-folder CDLC songs — raw Rocksmith 2014 assets (`audio.wem` + arrangement XMLs) that haven't been packaged into a PSARC or Sloppak yet.
+A plugin that adds a **Fix Sync** UI for loose-folder songs — raw assets (`audio.wem` + arrangement XMLs) that haven't been packaged into a Sloppak yet.
 
 > **Requires core changes to slopsmith.** The plugin alone is not functional. See [`docs/core-integration/CORE_CHANGES.md`](docs/core-integration/CORE_CHANGES.md) — these edits land via a companion PR to the slopsmith core repo and add scanner discovery, audio loading, art serving, and the `format: "loose"` flag the plugin keys off.
 
@@ -39,7 +39,7 @@ song_dir/
 
 ```bash
 cd /path/to/slopsmith/plugins
-git clone https://github.com/byrongamatos/slopsmith-plugin-loosefolder.git loose_folder
+git clone https://github.com/got-feedback/feedback-plugin-loosefolder.git loose_folder
 docker compose restart
 ```
 
@@ -76,7 +76,7 @@ Subsequent corrections append further `edited_offset` comments. "↩ Undo" steps
 
 - Folder paths are validated with `Path.resolve().relative_to(DLC_DIR)` — path traversal is blocked.
 - The plugin only operates on the first non-vocals, non-showlight XML in the folder; corrections are then mirrored to every other arrangement XML that shares the same effective original offset.
-- This plugin is intended for *authoring/testing* loose CDLCs. Once you're happy with timing, package the folder into a Sloppak for distribution.
+- This plugin is intended for *authoring/testing* loose songs. Once you're happy with timing, package the folder into a Sloppak for distribution.
 
 ## License
 
