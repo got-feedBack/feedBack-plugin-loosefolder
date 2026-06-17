@@ -127,7 +127,7 @@ def _extract_meta_for_file(psarc_path: Path) -> dict:
 **Location:** directly after the existing sloppaks list comprehension and before
 the `except PermissionError` block
 
-**Reason:** the scanner currently only globs for `*.psarc` and `*.sloppak`. Loose
+**Reason:** the scanner currently only globs for `*.sloppak`. Loose
 folders are discovered by finding all non-preview WEM files recursively and
 collecting their parent directories that pass `is_loose_song()`.
 
