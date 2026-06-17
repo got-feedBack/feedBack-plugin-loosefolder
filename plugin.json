@@ -1,0 +1,8 @@
+{
+  "id": "loose_folder",
+  "name": "Loose Folder Support",
+  "version": "1.0.0",
+  "private": false,
+  "script": "screen.js",
+  "routes": "routes.py"
+}
