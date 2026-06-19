@@ -350,7 +350,7 @@ function _injectFixBtn() {
         // Insert the panel above player-controls
         const player = document.getElementById('player');
         if (player) {
-            player.insertBefore(panel, controls);
+            if (controls && controls.parentNode === player) player.insertBefore(panel, controls); else player.appendChild(panel);
         }
         _syncPanelEl  = panel;
         _panelVisible = true;
@@ -362,7 +362,7 @@ function _injectFixBtn() {
     // Insert before the close button (last button in controls)
     const closeBtn = controls.querySelector('button:last-child');
     if (closeBtn) {
-        controls.insertBefore(btn, closeBtn);
+        if (closeBtn && closeBtn.parentNode === controls) controls.insertBefore(btn, closeBtn); else controls.appendChild(btn);
     } else {
         controls.appendChild(btn);
     }
