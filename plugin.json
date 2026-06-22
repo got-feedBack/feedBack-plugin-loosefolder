@@ -4,5 +4,8 @@
   "version": "1.0.0",
   "private": false,
   "script": "screen.js",
-  "routes": "routes.py"
+  "routes": "routes.py",
+  "category": "tools",
+  "description": "Browse and play loose-folder XML charts.",
+  "icon": "assets/thumb.svg"
 }
