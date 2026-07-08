@@ -97,12 +97,17 @@ def test_sync_save_only_updates_arrangements_sharing_the_original_offset(client,
     # lead already corrected once (original=0.0, current=1.0); rhythm untouched at 0.0.
     write_arrangement_xml(song_dir, "lead.xml", offset="1.0", original_comment="0.0")
     write_arrangement_xml(song_dir, "rhythm.xml", offset="0.0")
+    # zzz-other sorts after lead/rhythm, has a different effective_original,
+    # and should be skipped (must sort last so match_value still derives
+    # from lead.xml, the first arrangement alphabetically).
+    write_arrangement_xml(song_dir, "zzz-other.xml", offset="5.0", original_comment="3.0")
 
     r = client.post(SAVE, json={"filename": "song", "offset": 2.0})
     body = r.json()
     # lead's effective_original (0.0) matches rhythm's effective_original (0.0)
     # -> match_value derived from the FIRST xml alphabetically (lead.xml).
     assert set(body["updated"]) == {"lead.xml", "rhythm.xml"}
+    assert body["skipped"] == ["zzz-other.xml"]
 
 
 def test_sync_save_second_edit_appends_another_edited_comment(client, dlc_dir):
