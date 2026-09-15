@@ -39,7 +39,7 @@ song_dir/
 
 ```bash
 cd /path/to/slopsmith/plugins
-git clone https://github.com/got-feedback/feedback-plugin-loosefolder.git loose_folder
+git clone https://github.com/got-feedback/feedBack-plugin-loosefolder.git loose_folder
 docker compose restart
 ```
 
