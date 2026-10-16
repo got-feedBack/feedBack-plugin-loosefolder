@@ -1,8 +1,8 @@
-# Slopsmith Plugin: Loose Folder Support
+# feedBack Plugin: Loose Folder Support
 
 A plugin that adds a **Fix Sync** UI for loose-folder songs — raw assets (`audio.wem` + arrangement XMLs) that haven't been packaged into a Sloppak yet.
 
-> **Requires core changes to slopsmith.** The plugin alone is not functional. See [`docs/core-integration/CORE_CHANGES.md`](docs/core-integration/CORE_CHANGES.md) — these edits land via a companion PR to the slopsmith core repo and add scanner discovery, audio loading, art serving, and the `format: "loose"` flag the plugin keys off.
+feedBack core discovers, plays and serves art for loose-folder songs on its own, and tags them `format: "loose"`. This plugin adds the sync-fixing tools on top.
 
 ## Features
 
@@ -37,8 +37,10 @@ song_dir/
 
 ## Installation
 
+Loose Folder Support is bundled with the feedBack Desktop app, so desktop users already have it. For a self-hosted (Docker) install:
+
 ```bash
-cd /path/to/slopsmith/plugins
+cd /path/to/feedBack/plugins
 git clone https://github.com/got-feedback/feedback-plugin-loosefolder.git loose_folder
 docker compose restart
 ```
@@ -47,7 +49,7 @@ The plugin directory name **must** be `loose_folder` to match the `id` in `plugi
 
 ## How It Works
 
-1. The slopsmith scanner (with the core changes applied) picks up loose-folder songs from `DLC_DIR` and tags them `format: "loose"`.
+1. The feedBack scanner picks up loose-folder songs from `DLC_DIR` and tags them `format: "loose"`.
 2. When you load a loose song, the plugin notices the format flag via `song:ready` and injects a "⏱ Fix Sync" button next to the player controls.
 3. Click it to reveal a slider. Drag to bias the chart against the audio in real time; "▶ Preview" plays a short clip at the current setting.
 4. Click "💾 Save" to write the new offset back to every arrangement XML in the folder. The plugin seeds a `<!-- original_offset: … -->` comment on first save so corrections are always reversible.

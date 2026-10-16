@@ -6,6 +6,6 @@
   "script": "screen.js",
   "routes": "routes.py",
   "category": "tools",
-  "description": "Browse and play loose-folder XML charts.",
+  "description": "Fix Sync: adjust and save the audio offset of loose-folder songs.",
   "icon": "assets/thumb.svg"
 }
